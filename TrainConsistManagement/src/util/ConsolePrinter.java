@@ -1,4 +1,4 @@
-package com.train.util;
+package util;
 
 public class ConsolePrinter {
 
