@@ -1,19 +1,13 @@
 package service;
 
-import java.util.List;
+import java.util.Set;
 
 /**
- * Service for managing train consist.
+ * Service interface for UC5
  */
 public interface TrainService {
 
-    void initialize();
+    void addBogie(String bogie);
 
-    void insertAt(int index, String bogie);
-
-    void removeFirst();
-
-    void removeLast();
-
-    List<String> getConsist();
+    Set<String> getFormation();
 }

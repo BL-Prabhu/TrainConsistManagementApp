@@ -1,20 +1,20 @@
-# 🚆 Train Consist Management App (UC4)
+# 🚆 Train Consist Management App (UC5)
 
-A **console-based Java application** that simulates how a railway system maintains the **ordered sequence of train bogies**.
+A **console-based Java application** that simulates how a railway system maintains a train’s consist while ensuring **both uniqueness and insertion order of bogies**.
 
-This use case focuses on **preserving order and performing position-based operations** using `LinkedList`.
+This use case demonstrates how to use **LinkedHashSet** to model real-world train formation constraints.
 
 ---
 
 ## 📌 Features
 
-### ✅ UC4: Maintain Ordered Bogie Consist
+### ✅ UC5: Preserve Insertion Order of Bogies
 
-* Maintain train bogies in a **specific sequence**
-* Insert bogies at a **particular position**
-* Remove bogies from **front and rear**
-* Ensure **order is always preserved**
-* Perform efficient **dynamic operations**
+* Maintain bogies in **exact insertion sequence**
+* Prevent **duplicate bogie attachments**
+* Automatically enforce **uniqueness**
+* Display train formation in **original order**
+* No manual validation required for duplicates
 
 ---
 
@@ -33,22 +33,22 @@ Main → Controller → Service → Model → Utility
 * **App Layer**
 
   * Entry point of the application
-  * Executes UC4 operations step-by-step
+  * Simulates bogie attachment flow
 
 * **Controller Layer**
 
-  * Handles flow of operations
-  * Delegates tasks to service layer
+  * Handles user actions
+  * Delegates logic to service layer
 
 * **Service Layer**
 
   * Contains business logic
-  * Performs LinkedList operations
+  * Uses LinkedHashSet for operations
 
 * **Model Layer**
 
-  * Represents Train data
-  * Stores bogies using LinkedList
+  * Represents train data
+  * Stores bogies in LinkedHashSet
 
 * **Utility Layer**
 
@@ -61,14 +61,14 @@ Main → Controller → Service → Model → Utility
 ```
 com.train
 │── app/
-│     └── TrainApplication.java
+│     └── TrainApplicationUC5.java
 │
 │── controller/
-│     └── TrainController.java
+│     └── TrainControllerUC5.java
 │
 │── service/
-│     ├── TrainService.java
-│     └── TrainServiceImpl.java
+│     ├── TrainServiceUC5.java
+│     └── TrainServiceImplUC5.java
 │
 │── model/
 │     └── Train.java
@@ -82,7 +82,7 @@ com.train
 ## 🛠️ Tech Stack
 
 * Java 8+
-* Java Collections Framework (`LinkedList`)
+* Java Collections Framework (`LinkedHashSet`)
 * Object-Oriented Programming (OOP)
 * Clean Code Practices
 
@@ -90,90 +90,106 @@ com.train
 
 ## ❗ Problem
 
-Previous approaches:
+Using previous approaches:
 
-* `ArrayList` → maintains order but inefficient for insert/remove in middle
-* `HashSet` → removes duplicates but **does NOT maintain order**
+* **ArrayList / LinkedList**
 
-👉 Train systems require **strict sequence maintenance**
+  * Allows duplicates ❌
+* **HashSet**
+
+  * Removes duplicates ✔
+  * Does NOT maintain order ❌
+
+👉 Train systems require:
+
+* No duplicate bogies
+* Exact attachment sequence
 
 ---
 
 ## ✅ Solution
 
-Use **LinkedList** to:
+Use **LinkedHashSet**:
 
-* Maintain insertion order
-* Allow fast insertions at any position
-* Efficiently remove from beginning and end
+* Maintains **insertion order**
+* Automatically removes **duplicates**
+* Combines benefits of **Set + List**
 
 ---
 
 ## ⚙️ Operations
 
-### 1. Initialize Train
+### 1. Add Bogies
 
 ```
-Engine → Sleeper → AC → Cargo → Guard
-```
-
----
-
-### 2. Insert Bogie
-
-```
-Insert "Pantry Car" at position 2
+Engine → Sleeper → Cargo → Guard
 ```
 
 ---
 
-### 3. Remove Bogies
+### 2. Add Duplicate (Ignored)
 
-* Remove first bogie
-* Remove last bogie
+```
+Sleeper (duplicate)
+```
+
+---
+
+### 3. Display Final Formation
+
+```
+[Engine, Sleeper, Cargo, Guard]
+```
 
 ---
 
 ## 💡 Sample Output
 
 ```
-======================================
-UC4 - Maintain Ordered Bogie Consist
-======================================
+==========================================
+ UC5 - Preserve Insertion Order of Bogies
+==========================================
 
-Initial Train Consist:
-[Engine, Sleeper, AC, Cargo, Guard]
+Final Train Formation:
+[Engine, Sleeper, Cargo, Guard]
 
-After Inserting 'Pantry Car' at position 2:
-[Engine, Sleeper, Pantry Car, AC, Cargo, Guard]
+Note:
+LinkedHashSet preserves insertion order and removes duplicates automatically.
 
-After Removing First and Last Bogie:
-[Sleeper, Pantry Car, AC, Cargo]
-
-UC4 ordered consist operations completed...
+UC5 formation setup completed...
 ```
 
 ---
 
 ## 📚 Key Concepts Covered
 
-* LinkedList (Doubly Linked List)
-* Position-based insertion (`add(index, element)`)
-* Deletion operations (`removeFirst`, `removeLast`)
+* LinkedHashSet (Order + Uniqueness)
+* Set Interface
+* Automatic Deduplication
+* Ordered Iteration
 * Layered Architecture
 * Separation of Concerns
-* Clean Coding Standards
+
+---
+
+## 🔑 Key Requirements Implemented
+
+* Use `LinkedHashSet<String>` for train formation
+* Add multiple bogies
+* Attempt duplicate insertion
+* Ensure duplicates are ignored
+* Print final ordered formation
 
 ---
 
 ## 🚀 Future Enhancements
 
-* Add **menu-driven user input (Scanner)**
-* Implement **exception handling for invalid index**
-* Add **logging (Log4j / SLF4J)**
-* Introduce **Bogie classes with inheritance**
+* Add **user input (Scanner-based menu)**
+* Implement **bogie validation rules**
+* Introduce **custom Bogie class (equals & hashCode)**
 * Convert into **Spring Boot REST API**
-* Integrate **database (JPA / Hibernate)**
+* Add **database integration (JPA/Hibernate)**
+* Implement **logging and exception handling**
 
 ---
 
@@ -182,7 +198,7 @@ UC4 ordered consist operations completed...
 ### Branch Naming Convention
 
 ```
-feature/uc4-ordered-bogie-management
+feature/uc5-linkedhashset-bogie-order
 ```
 
 ---
@@ -190,17 +206,17 @@ feature/uc4-ordered-bogie-management
 ### Commit Message Format
 
 ```
-feat: implement ordered bogie management using LinkedList
-feat: add insert and remove operations
-refactor: improve service layer logic
-docs: add README for UC4
+feat: implement bogie uniqueness using LinkedHashSet
+feat: preserve insertion order in train formation
+refactor: improve service layer abstraction
+docs: add README for UC5
 ```
 
 ---
 
 ## 👨‍💻 Author
 
-Developed as part of learning **real-world Java backend development** and **data structure applications in system design**.
+Developed as part of learning **real-world Java backend development** and **data structure-driven system design**.
 
 ---
 
@@ -208,10 +224,10 @@ Developed as part of learning **real-world Java backend development** and **data
 
 This use case demonstrates how to:
 
-* Maintain strict order in dynamic systems
-* Perform efficient modifications
-* Apply LinkedList in real-world scenarios
+* Maintain **order + uniqueness simultaneously**
+* Prevent invalid duplicate entries
+* Use **LinkedHashSet in real-world scenarios**
 
 ---
 
-🚀 *Next Step:* Combine UC1–UC4 into a unified system and enhance with **OOP design + REST APIs**.
+🚀 *Next Step:* Combine UC1–UC5 into a unified system and enhance with **OOP modeling + REST APIs + database integration**.

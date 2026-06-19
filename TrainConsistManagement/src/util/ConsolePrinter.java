@@ -1,7 +1,7 @@
 package util;
 
 /**
- * Utility class for formatted console printing.
+ * Utility class for console printing
  */
 public class ConsolePrinter {
 
