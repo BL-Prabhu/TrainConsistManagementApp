@@ -1,36 +1,20 @@
-# 🚆 Train Consist Management App
+# 🚆 Train Consist Management App (UC4)
 
-A **console-based Java application** that simulates how a railway system manages a train’s consist (collection of bogies).
+A **console-based Java application** that simulates how a railway system maintains the **ordered sequence of train bogies**.
 
-This project is built using **industry-standard layered architecture** and demonstrates core Java concepts through real-world use cases.
+This use case focuses on **preserving order and performing position-based operations** using `LinkedList`.
 
 ---
 
 ## 📌 Features
 
-### ✅ UC1: Initialize Train
+### ✅ UC4: Maintain Ordered Bogie Consist
 
-* Create an empty train consist
-* Display initial bogie count
-* Show current train state
-
----
-
-### ✅ UC2: Passenger Bogie Management (CRUD)
-
-* Add passenger bogies (Sleeper, AC Chair, First Class)
-* Remove bogies dynamically
-* Check if a bogie exists
-* Display updated train consist
-
----
-
-### ✅ UC3: Track Unique Bogie IDs
-
-* Store bogie IDs using `HashSet`
-* Automatically remove duplicate entries
-* Ensure uniqueness of bogies
-* Demonstrate real-world validation logic
+* Maintain train bogies in a **specific sequence**
+* Insert bogies at a **particular position**
+* Remove bogies from **front and rear**
+* Ensure **order is always preserved**
+* Perform efficient **dynamic operations**
 
 ---
 
@@ -48,27 +32,27 @@ Main → Controller → Service → Model → Utility
 
 * **App Layer**
 
-    * Entry point of the application
-    * Initializes and starts execution
+  * Entry point of the application
+  * Executes UC4 operations step-by-step
 
 * **Controller Layer**
 
-    * Handles application flow
-    * Delegates tasks to service layer
+  * Handles flow of operations
+  * Delegates tasks to service layer
 
 * **Service Layer**
 
-    * Contains business logic
-    * Implements core functionalities
+  * Contains business logic
+  * Performs LinkedList operations
 
 * **Model Layer**
 
-    * Represents data structures (Train, Bogie)
+  * Represents Train data
+  * Stores bogies using LinkedList
 
 * **Utility Layer**
 
-    * Provides reusable helper methods
-    * Handles console outputs and formatting
+  * Handles formatted console output
 
 ---
 
@@ -84,8 +68,7 @@ com.train
 │
 │── service/
 │     ├── TrainService.java
-│     └── impl/
-│           └── TrainServiceImpl.java
+│     └── TrainServiceImpl.java
 │
 │── model/
 │     └── Train.java
@@ -99,68 +82,98 @@ com.train
 ## 🛠️ Tech Stack
 
 * Java 8+
-* Java Collections Framework (`ArrayList`, `HashSet`)
+* Java Collections Framework (`LinkedList`)
 * Object-Oriented Programming (OOP)
 * Clean Code Practices
 
 ---
 
-## ▶️ How to Run
+## ❗ Problem
 
-### 1. Compile
+Previous approaches:
 
-```bash
-javac -d bin src/main/java/com/train/**/*.java
+* `ArrayList` → maintains order but inefficient for insert/remove in middle
+* `HashSet` → removes duplicates but **does NOT maintain order**
+
+👉 Train systems require **strict sequence maintenance**
+
+---
+
+## ✅ Solution
+
+Use **LinkedList** to:
+
+* Maintain insertion order
+* Allow fast insertions at any position
+* Efficiently remove from beginning and end
+
+---
+
+## ⚙️ Operations
+
+### 1. Initialize Train
+
+```
+Engine → Sleeper → AC → Cargo → Guard
 ```
 
-### 2. Run
+---
 
-```bash
-java -cp bin com.train.app.TrainApplication
+### 2. Insert Bogie
+
 ```
+Insert "Pantry Car" at position 2
+```
+
+---
+
+### 3. Remove Bogies
+
+* Remove first bogie
+* Remove last bogie
 
 ---
 
 ## 💡 Sample Output
 
 ```
-=== Train Consist Management App ===
+======================================
+UC4 - Maintain Ordered Bogie Consist
+======================================
 
-UC3 - Track Unique Bogie IDs
+Initial Train Consist:
+[Engine, Sleeper, AC, Cargo, Guard]
 
-Bogie IDs After Insertion:
-[BG101, BG102, BG103]
+After Inserting 'Pantry Car' at position 2:
+[Engine, Sleeper, Pantry Car, AC, Cargo, Guard]
 
-Note:
-Duplicates are automatically ignored by HashSet.
+After Removing First and Last Bogie:
+[Sleeper, Pantry Car, AC, Cargo]
 
-UC3 uniqueness validation completed...
-
-System ready for operations...
+UC4 ordered consist operations completed...
 ```
 
 ---
 
 ## 📚 Key Concepts Covered
 
-* ArrayList (Dynamic Data Structure)
-* HashSet (Uniqueness & Hashing)
-* CRUD Operations
+* LinkedList (Doubly Linked List)
+* Position-based insertion (`add(index, element)`)
+* Deletion operations (`removeFirst`, `removeLast`)
 * Layered Architecture
 * Separation of Concerns
-* Abstraction & Encapsulation
 * Clean Coding Standards
 
 ---
 
 ## 🚀 Future Enhancements
 
-* Implement **Bogie classes using OOP (Inheritance & Polymorphism)**
-* Add **Goods bogies with validation rules**
-* Introduce **Factory Design Pattern**
-* Convert application into **Spring Boot REST API**
-* Add **Database integration (JPA / Hibernate)**
-* Implement **Logging & Global Exception Handling**
+* Add **menu-driven user input (Scanner)**
+* Implement **exception handling for invalid index**
+* Add **logging (Log4j / SLF4J)**
+* Introduce **Bogie classes with inheritance**
+* Convert into **Spring Boot REST API**
+* Integrate **database (JPA / Hibernate)**
 
 ---
 
@@ -169,9 +182,7 @@ System ready for operations...
 ### Branch Naming Convention
 
 ```
-feature/uc1-train-initialization
-feature/uc2-passenger-bogie-crud
-feature/uc3-unique-bogie-ids
+feature/uc4-ordered-bogie-management
 ```
 
 ---
@@ -179,28 +190,28 @@ feature/uc3-unique-bogie-ids
 ### Commit Message Format
 
 ```
-feat: add unique bogie tracking using HashSet
-refactor: improve service layer structure
-chore: setup project architecture
-docs: update README with UC3
+feat: implement ordered bogie management using LinkedList
+feat: add insert and remove operations
+refactor: improve service layer logic
+docs: add README for UC4
 ```
 
 ---
 
 ## 👨‍💻 Author
 
-Developed as part of learning **real-world Java backend development** and **scalable system design principles**.
+Developed as part of learning **real-world Java backend development** and **data structure applications in system design**.
 
 ---
 
 ## ⭐ Conclusion
 
-This project provides a strong foundation for:
+This use case demonstrates how to:
 
-* Real-world backend development
-* Scalable application architecture
-* Transition to enterprise frameworks like Spring Boot
+* Maintain strict order in dynamic systems
+* Perform efficient modifications
+* Apply LinkedList in real-world scenarios
 
 ---
 
-🚀 *Next Step:* Extend this project with **object-based uniqueness (equals & hashCode)** and convert it into a **production-ready REST API**.
+🚀 *Next Step:* Combine UC1–UC4 into a unified system and enhance with **OOP design + REST APIs**.
