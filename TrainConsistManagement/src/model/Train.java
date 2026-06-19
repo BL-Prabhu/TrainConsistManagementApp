@@ -1,16 +1,13 @@
 package model;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-/**
- * Represents Train consist using LinkedList.
- */
 public class Train {
 
-    private final LinkedList<String> bogies = new LinkedList<>();
+    private final LinkedHashSet<String> bogies = new LinkedHashSet<>();
 
-    public List<String> getBogies() {
+    public Set<String> getBogies() {
         return bogies;
     }
 }
