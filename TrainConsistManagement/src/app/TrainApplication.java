@@ -2,16 +2,17 @@ package app;
 
 
 import controller.TrainController;
+import util.ConsolePrinter;
 
 public class TrainApplication {
 
     public static void main(String[] args) {
 
-        com.train.util.ConsolePrinter.printBanner();
+        ConsolePrinter.printBanner();
 
         TrainController controller = new TrainController();
-        controller.startApplication();
+        controller.runUC2();   // calling UC2
 
-        com.train.util.ConsolePrinter.printReadyMessage();
+        ConsolePrinter.printReadyMessage();
     }
 }
