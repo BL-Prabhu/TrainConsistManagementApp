@@ -1,44 +1,38 @@
 package controller;
 
-
 import service.TrainService;
 import service.TrainServiceImpl;
 
+import java.util.List;
+
 /**
- * Controller layer responsible for handling application flow.
- *
- * <p>This class acts as a mediator between:
- * <ul>
- *     <li>Application entry point (Main)</li>
- *     <li>Business logic layer (Service)</li>
- * </ul>
- *
- * <p>In UC3, it triggers the unique bogie ID tracking workflow.
- *
- * @author Developer
- * @version 3.0
+ * Controller layer for Train operations.
  */
 public class TrainController {
 
-    private final TrainService trainService;
+    private final TrainService service;
 
-    /**
-     * Default constructor initializes service dependency.
-     */
     public TrainController() {
-        this.trainService = new TrainServiceImpl();
+        this.service = new TrainServiceImpl();
     }
 
-    /**
-     * Executes Use Case 3:
-     * Track unique bogie IDs using HashSet.
-     */
-    public void runUC3() {
+    public void initializeTrain() {
+        service.initialize();
+    }
 
-        System.out.println("=======================================");
-        System.out.println("UC3 - Track Unique Bogie IDs");
-        System.out.println("=======================================\n");
+    public void insertBogie(int index, String bogie) {
+        service.insertAt(index, bogie);
+    }
 
-        trainService.trackUniqueBogieIds();
+    public void removeFirst() {
+        service.removeFirst();
+    }
+
+    public void removeLast() {
+        service.removeLast();
+    }
+
+    public List<String> getConsist() {
+        return service.getConsist();
     }
 }

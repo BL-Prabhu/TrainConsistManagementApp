@@ -1,38 +1,35 @@
 package app;
 
-
 import controller.TrainController;
 import util.ConsolePrinter;
 
 /**
- * Entry point of the Train Consist Management Application.
- *
- * <p>This class is responsible for:
- * <ul>
- *     <li>Bootstrapping the application</li>
- *     <li>Invoking the controller layer</li>
- *     <li>Displaying application banner and ready state</li>
- * </ul>
- *
- * <p>Follows standard Java application structure using the main() method.
- *
- * @author Developer
- * @version 3.0
+ * UC4 - Maintain Ordered Bogie Consist
  */
 public class TrainApplication {
 
-    /**
-     * Main method - JVM entry point.
-     *
-     * @param args command-line arguments
-     */
     public static void main(String[] args) {
 
-        ConsolePrinter.printBanner();
-
         TrainController controller = new TrainController();
-        controller.runUC3();
 
-        ConsolePrinter.printReadyMessage();
+        ConsolePrinter.printHeader("UC4 - Maintain Ordered Bogie Consist");
+
+        // Step 1: Initialize
+        controller.initializeTrain();
+        ConsolePrinter.print("Initial Train Consist:");
+        ConsolePrinter.print(controller.getConsist().toString());
+
+        // Step 2: Insert
+        controller.insertBogie(2, "Pantry Car");
+        ConsolePrinter.print("\nAfter Inserting 'Pantry Car' at position 2:");
+        ConsolePrinter.print(controller.getConsist().toString());
+
+        // Step 3: Remove
+        controller.removeFirst();
+        controller.removeLast();
+        ConsolePrinter.print("\nAfter Removing First and Last Bogie:");
+        ConsolePrinter.print(controller.getConsist().toString());
+
+        ConsolePrinter.print("\nUC4 ordered consist operations completed...");
     }
 }
