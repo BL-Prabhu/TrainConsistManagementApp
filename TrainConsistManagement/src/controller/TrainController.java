@@ -1,12 +1,13 @@
 package controller;
 
+
 import service.TrainService;
 import service.TrainServiceImpl;
 
-import java.util.List;
+import java.util.Set;
 
 /**
- * Controller layer for Train operations.
+ * Controller for UC5 operations
  */
 public class TrainController {
 
@@ -16,23 +17,11 @@ public class TrainController {
         this.service = new TrainServiceImpl();
     }
 
-    public void initializeTrain() {
-        service.initialize();
+    public void addBogie(String bogie) {
+        service.addBogie(bogie);
     }
 
-    public void insertBogie(int index, String bogie) {
-        service.insertAt(index, bogie);
-    }
-
-    public void removeFirst() {
-        service.removeFirst();
-    }
-
-    public void removeLast() {
-        service.removeLast();
-    }
-
-    public List<String> getConsist() {
-        return service.getConsist();
+    public Set<String> getFormation() {
+        return service.getFormation();
     }
 }
