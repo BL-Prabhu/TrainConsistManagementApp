@@ -1,16 +1,23 @@
 package controller;
 
 
+import service.TrainService;
+import service.TrainServiceImpl;
+
 public class TrainController {
 
-    private final com.train.service.TrainService trainService;
+    private final TrainService trainService;
 
     public TrainController() {
-        this.trainService = new com.train.service.impl.TrainServiceImpl();
+        this.trainService = new TrainServiceImpl();
     }
 
-    public void startApplication() {
-        trainService.initializeTrain();
-        trainService.displaySummary();
+    public void runUC2() {
+
+        System.out.println("=======================================");
+        System.out.println("UC2 - Add Passenger Bogies to Train");
+        System.out.println("=======================================\n");
+
+        trainService.performPassengerBogieOperations();
     }
 }

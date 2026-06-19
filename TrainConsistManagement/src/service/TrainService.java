@@ -1,8 +1,6 @@
-package com.train.service;
+package service;
 
 public interface TrainService {
 
-    void initializeTrain();
-
-    void displaySummary();
+    void performPassengerBogieOperations();
 }
