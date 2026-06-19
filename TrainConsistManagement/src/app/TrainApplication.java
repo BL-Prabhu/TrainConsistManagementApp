@@ -1,10 +1,9 @@
 package app;
 
 import controller.TrainController;
-import util.ConsolePrinter;
 
 /**
- * UC4 - Maintain Ordered Bogie Consist
+ * UC5 - Preserve Insertion Order of Bogies using LinkedHashSet
  */
 public class TrainApplication {
 
@@ -12,24 +11,26 @@ public class TrainApplication {
 
         TrainController controller = new TrainController();
 
-        ConsolePrinter.printHeader("UC4 - Maintain Ordered Bogie Consist");
+        System.out.println("==========================================");
+        System.out.println(" UC5 - Preserve Insertion Order of Bogies ");
+        System.out.println("==========================================\n");
 
-        // Step 1: Initialize
-        controller.initializeTrain();
-        ConsolePrinter.print("Initial Train Consist:");
-        ConsolePrinter.print(controller.getConsist().toString());
+        // Step 1: Add bogies
+        controller.addBogie("Engine");
+        controller.addBogie("Sleeper");
+        controller.addBogie("Cargo");
+        controller.addBogie("Guard");
 
-        // Step 2: Insert
-        controller.insertBogie(2, "Pantry Car");
-        ConsolePrinter.print("\nAfter Inserting 'Pantry Car' at position 2:");
-        ConsolePrinter.print(controller.getConsist().toString());
+        // Step 2: Add duplicate
+        controller.addBogie("Sleeper"); // duplicate
 
-        // Step 3: Remove
-        controller.removeFirst();
-        controller.removeLast();
-        ConsolePrinter.print("\nAfter Removing First and Last Bogie:");
-        ConsolePrinter.print(controller.getConsist().toString());
+        // Step 3: Display final formation
+        System.out.println("Final Train Formation:");
+        System.out.println(controller.getFormation());
 
-        ConsolePrinter.print("\nUC4 ordered consist operations completed...");
+        System.out.println("\nNote:");
+        System.out.println("LinkedHashSet preserves insertion order and removes duplicates automatically.");
+
+        System.out.println("\nUC5 formation setup completed...");
     }
 }
