@@ -1,60 +1,51 @@
 package service;
 
+import model.Train;
 
-
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
- * Implementation of TrainService interface.
- *
- * <p>This class contains business logic for managing
- * train operations.
- *
- * <p>UC3 Implementation:
- * <ul>
- *     <li>Stores bogie IDs in HashSet</li>
- *     <li>Ensures uniqueness automatically</li>
- *     <li>Demonstrates duplicate handling</li>
- * </ul>
- *
- * <p>Key Concept:
- * HashSet does not allow duplicate elements.
- *
- * @author Developer
- * @version 3.0
+ * LinkedList-based implementation.
  */
 public class TrainServiceImpl implements TrainService {
 
-    /**
-     * Performs uniqueness validation of bogie IDs.
-     *
-     * <p>Steps:
-     * <ol>
-     *     <li>Create HashSet</li>
-     *     <li>Add bogie IDs (including duplicates)</li>
-     *     <li>Display unique values</li>
-     * </ol>
-     */
+    private final Train train = new Train();
+
     @Override
-    public void trackUniqueBogieIds() {
+    public void initialize() {
+        List<String> list = train.getBogies();
 
-        // Create a HashSet to store unique bogie IDs
-        Set<String> bogieIds = new HashSet<>();
+        list.add("Engine");
+        list.add("Sleeper");
+        list.add("AC");
+        list.add("Cargo");
+        list.add("Guard");
+    }
 
-        // Adding bogie IDs (duplicates included intentionally)
-        bogieIds.add("BG101");
-        bogieIds.add("BG102");
-        bogieIds.add("BG103");
-        bogieIds.add("BG101"); // Duplicate
-        bogieIds.add("BG102"); // Duplicate
+    @Override
+    public void insertAt(int index, String bogie) {
+        if (index < 0 || index > train.getBogies().size()) {
+            throw new IndexOutOfBoundsException("Invalid index: " + index);
+        }
+        train.getBogies().add(index, bogie);
+    }
 
-        System.out.println("Bogie IDs After Insertion:");
-        System.out.println(bogieIds);
+    @Override
+    public void removeFirst() {
+        if (!train.getBogies().isEmpty()) {
+            train.getBogies().removeFirst();
+        }
+    }
 
-        System.out.println("\nNote:");
-        System.out.println("Duplicates are automatically ignored by HashSet.");
+    @Override
+    public void removeLast() {
+        if (!train.getBogies().isEmpty()) {
+            train.getBogies().removeLast();
+        }
+    }
 
-        System.out.println("\nUC3 uniqueness validation completed...");
+    @Override
+    public List<String> getConsist() {
+        return train.getBogies();
     }
 }
