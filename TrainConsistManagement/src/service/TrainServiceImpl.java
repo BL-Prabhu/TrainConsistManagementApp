@@ -2,22 +2,22 @@ package service;
 
 import model.Train;
 
-import java.util.Set;
 
-/**
- * LinkedHashSet implementation
- */
+import java.util.Map;
+
 public class TrainServiceImpl implements TrainService {
 
     private final Train train = new Train();
 
     @Override
-    public void addBogie(String bogie) {
-        train.getBogies().add(bogie);
+    public void addBogieCapacity(String bogie, int capacity) {
+        train.getBogieCapacityMap().put(bogie, capacity);
     }
 
     @Override
-    public Set<String> getFormation() {
-        return train.getBogies();
+    public void displayFormation() {
+        for (Map.Entry<String, Integer> entry : train.getBogieCapacityMap().entrySet()) {
+            System.out.println(entry.getKey() + " -> Capacity: " + entry.getValue());
+        }
     }
 }
