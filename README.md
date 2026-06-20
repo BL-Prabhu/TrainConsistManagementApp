@@ -1,41 +1,58 @@
-# UC10 - Count Total Seats in Train (reduce)
+# UC11 - Validate Train ID & Cargo Codes (Regex)
 
 ## 📌 Overview
-This use case demonstrates aggregation of bogie capacities into a single total value using Java Stream API.
 
-## ❗ Problem in UC9
-- Grouping gives structure but no metrics
-- Cannot calculate totals
-- No quantitative insights
+This use case introduces input validation using Regular Expressions (Regex) to ensure that Train IDs and Cargo Codes follow strict business formats before processing.
+
+## ❗ Problem Statement
+
+Previous use cases assume all input data is valid. In real-world systems, invalid inputs can:
+
+* Break data integrity
+* Cause processing failures
+* Generate incorrect reports
 
 ## 🎯 Objective
-Calculate total seating capacity of the train.
 
-## 🛠️ Technologies Used
-- Java
-- Stream API
-- map()
-- reduce()
+Validate:
+
+* Train ID → Format: TRN-1234
+* Cargo Code → Format: PET-AB
+
+## 🔧 Technologies Used
+
+* Java
+* Regex (Regular Expressions)
+* Pattern & Matcher Classes
 
 ## ▶️ Flow
-1. Create bogie list
-2. Convert to stream
-3. Extract capacities using map()
-4. Apply reduce() to sum values
-5. Display total capacity
+
+1. User enters Train ID and Cargo Code
+2. System compiles regex patterns
+3. Matcher validates input
+4. Displays VALID / INVALID result
 
 ## 📊 Sample Output
 
-Total Seating Capacity: 242
+Train ID is VALID: TRN-1234
+Cargo Code is VALID: PET-AB
 
-## 🚀 Key Concepts
-- map()
-- reduce()
-- Integer::sum
-- Aggregation
+Train ID is INVALID: TRAIN12
+Cargo Code is INVALID: PET-123
+
+## 🧠 Key Concepts
+
+* Pattern.compile()
+* matcher().matches()
+* Regex format enforcement
 
 ## ✅ Benefits
-- Provides real metrics
-- Cleaner than loops
-- Useful for analytics
-- Improves decision making
+
+* Prevents invalid input
+* Ensures data integrity
+* Improves reliability
+* Introduces enterprise-level validation
+
+## 🚀 Conclusion
+
+Regex validation is a critical step in real-world systems to ensure only correctly formatted data enters the system.
