@@ -1,33 +1,31 @@
 package app;
 
-import controller.BogieController;
-import model.Bogie;
-
-import java.util.List;
+import controller.ValidationController;
+import java.util.Scanner;
 
 public class TrainApplication {
 
     public static void main(String[] args) {
 
-        BogieController controller = new BogieController();
+        Scanner scanner = new Scanner(System.in);
+        ValidationController controller = new ValidationController();
 
-        System.out.println("Bogies in Train\n");
+        System.out.println("=== UC11: Validate Train ID & Cargo Code ===");
 
-        // Display values (your requirement)
-        // Actual seats (adjusted to get total = 242)
-        controller.addBogie("Sleeper", 10, 100);
-        controller.addBogie("AC chair", 34, 80);
-        controller.addBogie("First Class", 22, 62);
+        // User Input
+        System.out.print("Enter Train ID: ");
+        String trainId = scanner.nextLine();
 
-        List<Bogie> bogies = controller.getAllBogies();
+        System.out.print("Enter Cargo Code: ");
+        String cargoCode = scanner.nextLine();
 
-        // Print in required format
-        bogies.forEach(b ->
-                System.out.println(b.getName() + " - " + b.getDisplayCount())
-        );
+        // Validation
+        controller.validate(trainId, cargoCode);
 
-        int total = controller.getTotalCapacity();
+        // Demo invalid case
+        System.out.println("\n--- Demo Invalid Inputs ---");
+        controller.validate("TRAIN12", "PET-123");
 
-        System.out.println("\nTotal Seating Capacity: " + total);
+        scanner.close();
     }
 }
