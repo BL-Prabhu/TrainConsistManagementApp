@@ -12,4 +12,7 @@ public interface BogieService {
     List<Bogie> sortByCapacityAscending();
 
     List<Bogie> sortByCapacityDescending();
+
+    // UC8
+    List<Bogie> filterByCapacityGreaterThan(int capacity);
 }
