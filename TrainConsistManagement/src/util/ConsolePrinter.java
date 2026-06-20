@@ -1,8 +1,5 @@
 package util;
 
-/**
- * Utility class for console printing
- */
 public class ConsolePrinter {
 
     public static void printHeader(String title) {
