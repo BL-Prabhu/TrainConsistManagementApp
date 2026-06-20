@@ -1,58 +1,62 @@
-# UC11 - Validate Train ID & Cargo Codes (Regex)
+# UC12 - Safety Compliance Check for Goods Bogies
 
 ## 📌 Overview
 
-This use case introduces input validation using Regular Expressions (Regex) to ensure that Train IDs and Cargo Codes follow strict business formats before processing.
+This use case enforces real-world safety rules on goods bogies using Java Streams and lambda expressions.
 
 ## ❗ Problem Statement
 
-Previous use cases assume all input data is valid. In real-world systems, invalid inputs can:
+Earlier use cases allowed any cargo assignment without validation, which can lead to:
 
-* Break data integrity
-* Cause processing failures
-* Generate incorrect reports
+* Unsafe train configurations
+* Violation of domain rules
+* Operational hazards
 
 ## 🎯 Objective
 
-Validate:
+Ensure safety compliance:
 
-* Train ID → Format: TRN-1234
-* Cargo Code → Format: PET-AB
+* Cylindrical bogies must carry Petroleum only
 
 ## 🔧 Technologies Used
 
-* Java
-* Regex (Regular Expressions)
-* Pattern & Matcher Classes
+* Java Streams API
+* Lambda Expressions
+* allMatch() Terminal Operation
 
 ## ▶️ Flow
 
-1. User enters Train ID and Cargo Code
-2. System compiles regex patterns
-3. Matcher validates input
-4. Displays VALID / INVALID result
+1. User provides list of goods bogies
+2. System converts list to stream
+3. allMatch() validates each bogie
+4. Rule applied:
+
+    * Cylindrical → Petroleum only
+5. Displays safety result
 
 ## 📊 Sample Output
 
-Train ID is VALID: TRN-1234
-Cargo Code is VALID: PET-AB
+--- Safety Compliance Result ---
+Train is SAFE for operation ✅
 
-Train ID is INVALID: TRAIN12
-Cargo Code is INVALID: PET-123
+--- Invalid Scenario ---
+Train is NOT SAFE ❌
+Rule Violated: Cylindrical bogie must carry Petroleum only
 
 ## 🧠 Key Concepts
 
-* Pattern.compile()
-* matcher().matches()
-* Regex format enforcement
+* stream()
+* allMatch()
+* Lambda expressions
+* Short-circuit evaluation
 
 ## ✅ Benefits
 
-* Prevents invalid input
-* Ensures data integrity
-* Improves reliability
-* Introduces enterprise-level validation
+* Prevents unsafe cargo assignments
+* Enforces business rules
+* Improves system reliability
+* Uses declarative programming
 
 ## 🚀 Conclusion
 
-Regex validation is a critical step in real-world systems to ensure only correctly formatted data enters the system.
+UC12 introduces safety validation using streams, ensuring that only compliant train formations proceed further in the system.
