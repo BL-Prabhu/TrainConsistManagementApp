@@ -1,55 +1,43 @@
-# UC7 - Sort Bogies by Capacity (Comparator)
+# UC8 - Filter Passenger Bogies Using Streams
 
 ## 📌 Overview
-This use case demonstrates sorting of passenger bogies based on seating capacity using Java Comparator.
+This use case demonstrates filtering of bogies using Java Stream API.
 
-## ❗ Problem in UC6
-- Data stored using HashMap
-- No ordering
-- Difficult for planning and analysis
+## ❗ Problem in UC7
+- Sorting only arranges data
+- Cannot filter based on conditions
+- Requires manual loops
 
 ## 🎯 Objective
-Sort bogies based on seating capacity to enable better decision-making.
+Filter bogies based on seating capacity using Streams.
 
 ## 🛠️ Technologies Used
 - Java
-- OOP (Model, Service, Controller)
-- Collections (List)
-- Comparator
+- Stream API
 - Lambda Expressions
-
-## 📂 Project Structure
-model/
-service/
-controller/
-app/
+- Collections (List)
 
 ## ▶️ Flow
-1. Create Bogie objects
-2. Store in List
-3. Apply Comparator sorting
-4. Display results
+1. Create bogie list
+2. Convert to stream
+3. Apply filter condition
+4. Collect results
+5. Display filtered bogies
 
 ## 📊 Sample Output
 
-Ascending Order:
-First Class (24)
-AC Chair (56)
+Bogies with capacity > 60:
 Sleeper (72)
 General (90)
-
-Descending Order:
-General (90)
-Sleeper (72)
-AC Chair (56)
-First Class (24)
 
 ## 🚀 Key Concepts
-- Comparator.comparingInt()
-- Custom object sorting
-- Separation of concerns
+- stream()
+- filter()
+- collect()
+- Functional programming
 
 ## ✅ Benefits
-- Enables ranking of bogies
-- Improves planning
-- Clean and maintainable design
+- Cleaner code
+- No manual loops
+- Easy to maintain
+- Declarative style

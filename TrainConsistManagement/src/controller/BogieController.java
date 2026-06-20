@@ -29,4 +29,9 @@ public class BogieController {
     public List<Bogie> getSortedDescending() {
         return service.sortByCapacityDescending();
     }
+
+    // UC8
+    public List<Bogie> getFilteredBogies(int capacity) {
+        return service.filterByCapacityGreaterThan(capacity);
+    }
 }

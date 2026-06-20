@@ -8,20 +8,17 @@ public class TrainApplication {
 
         BogieController controller = new BogieController();
 
-        System.out.println("=== UC7: Sort Bogies by Capacity ===");
+        System.out.println("=== UC8: Filter Bogies using Streams ===");
 
-        // Add Bogies
+        // Reuse data
         controller.addBogie("Sleeper", 72);
         controller.addBogie("AC Chair", 56);
         controller.addBogie("First Class", 24);
         controller.addBogie("General", 90);
 
-        // Ascending
-        System.out.println("\nAscending Order:");
-        controller.getSortedAscending().forEach(System.out::println);
+        System.out.println("\nBogies with capacity > 60:");
 
-        // Descending
-        System.out.println("\nDescending Order:");
-        controller.getSortedDescending().forEach(System.out::println);
+        controller.getFilteredBogies(60)
+                .forEach(System.out::println);
     }
 }
