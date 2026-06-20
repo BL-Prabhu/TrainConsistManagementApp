@@ -1,30 +1,27 @@
 package app;
 
+import controller.BogieController;
 
-import controller.TrainController;
-
-/**
- * UC6 - Map Bogie to Capacity using HashMap
- */
 public class TrainApplication {
 
     public static void main(String[] args) {
 
-        TrainController controller = new TrainController();
+        BogieController controller = new BogieController();
 
-        System.out.println("======================================");
-        System.out.println(" UC6 - Map Bogie to Capacity (HashMap)");
-        System.out.println("======================================\n");
+        System.out.println("=== UC7: Sort Bogies by Capacity ===");
 
-        // Step 1: Add bogie capacities
-        controller.addBogieCapacity("Sleeper", 72);
-        controller.addBogieCapacity("AC Chair", 60);
-        controller.addBogieCapacity("First Class", 24);
+        // Add Bogies
+        controller.addBogie("Sleeper", 72);
+        controller.addBogie("AC Chair", 56);
+        controller.addBogie("First Class", 24);
+        controller.addBogie("General", 90);
 
-        // Step 2: Display mapping
-        System.out.println("Bogie Capacity Mapping:");
-        controller.displayFormation();
+        // Ascending
+        System.out.println("\nAscending Order:");
+        controller.getSortedAscending().forEach(System.out::println);
 
-        System.out.println("\nUC6 mapping completed...");
+        // Descending
+        System.out.println("\nDescending Order:");
+        controller.getSortedDescending().forEach(System.out::println);
     }
 }
