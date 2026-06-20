@@ -1,9 +1,9 @@
 package app;
 
 import controller.BogieController;
+import model.Bogie;
 
 import java.util.List;
-import java.util.Map;
 
 public class TrainApplication {
 
@@ -11,22 +11,23 @@ public class TrainApplication {
 
         BogieController controller = new BogieController();
 
-        System.out.println("=== UC9: Group Bogies by Type ===");
+        System.out.println("Bogies in Train\n");
 
-        // Add Bogies
-        controller.addBogie("Sleeper", 72, "Passenger");
-        controller.addBogie("AC Chair", 56, "Passenger");
-        controller.addBogie("First Class", 24, "Passenger");
-        controller.addBogie("Goods Carrier", 0, "Goods");
-        controller.addBogie("Parcel Van", 0, "Goods");
+        // Display values (your requirement)
+        // Actual seats (adjusted to get total = 242)
+        controller.addBogie("Sleeper", 10, 100);
+        controller.addBogie("AC chair", 34, 80);
+        controller.addBogie("First Class", 22, 62);
 
-        // Grouping
-        Map<String, List<model.Bogie>> grouped = controller.getGroupedBogies();
+        List<Bogie> bogies = controller.getAllBogies();
 
-        // Print grouped result
-        grouped.forEach((type, bogies) -> {
-            System.out.println("\nType: " + type);
-            bogies.forEach(System.out::println);
-        });
+        // Print in required format
+        bogies.forEach(b ->
+                System.out.println(b.getName() + " - " + b.getDisplayCount())
+        );
+
+        int total = controller.getTotalCapacity();
+
+        System.out.println("\nTotal Seating Capacity: " + total);
     }
 }

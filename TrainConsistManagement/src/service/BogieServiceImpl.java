@@ -4,8 +4,6 @@ import model.Bogie;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class BogieServiceImpl implements BogieService {
 
@@ -22,16 +20,9 @@ public class BogieServiceImpl implements BogieService {
     }
 
     @Override
-    public List<Bogie> filterByCapacityGreaterThan(int capacity) {
+    public int getTotalSeatingCapacity() {
         return bogies.stream()
-                .filter(b -> b.getCapacity() > capacity)
-                .collect(Collectors.toList());
-    }
-
-    // ✅ UC9 - Grouping
-    @Override
-    public Map<String, List<Bogie>> groupBogiesByType() {
-        return bogies.stream()
-                .collect(Collectors.groupingBy(Bogie::getType));
+                .map(Bogie::getActualSeats)
+                .reduce(0, Integer::sum);
     }
 }

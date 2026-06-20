@@ -1,48 +1,41 @@
-# UC9 - Group Bogies by Type (Collectors.groupingBy)
+# UC10 - Count Total Seats in Train (reduce)
 
 ## 📌 Overview
-This use case demonstrates grouping bogies into categories using Java Stream API.
+This use case demonstrates aggregation of bogie capacities into a single total value using Java Stream API.
 
-## ❗ Problem in UC8
-- Filtering gives flat list
-- No categorization
-- Difficult for reporting
+## ❗ Problem in UC9
+- Grouping gives structure but no metrics
+- Cannot calculate totals
+- No quantitative insights
 
 ## 🎯 Objective
-Group bogies into structured categories using groupingBy.
+Calculate total seating capacity of the train.
 
 ## 🛠️ Technologies Used
 - Java
 - Stream API
-- Collectors.groupingBy
-- Map
+- map()
+- reduce()
 
 ## ▶️ Flow
 1. Create bogie list
 2. Convert to stream
-3. Apply groupingBy()
-4. Store result in Map
-5. Display grouped bogies
+3. Extract capacities using map()
+4. Apply reduce() to sum values
+5. Display total capacity
 
 ## 📊 Sample Output
 
-Type: Passenger
-Sleeper (72, Passenger)
-AC Chair (56, Passenger)
-First Class (24, Passenger)
-
-Type: Goods
-Goods Carrier (0, Goods)
-Parcel Van (0, Goods)
+Total Seating Capacity: 242
 
 ## 🚀 Key Concepts
-- groupingBy()
-- Map<K, List<V>>
-- Data aggregation
-- Structured transformation
+- map()
+- reduce()
+- Integer::sum
+- Aggregation
 
 ## ✅ Benefits
-- Organized data
-- Better reporting
-- Easy analytics
-- Clean and readable
+- Provides real metrics
+- Cleaner than loops
+- Useful for analytics
+- Improves decision making
