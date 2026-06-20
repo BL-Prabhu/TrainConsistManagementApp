@@ -5,7 +5,6 @@ import service.BogieService;
 import service.BogieServiceImpl;
 
 import java.util.List;
-import java.util.Map;
 
 public class BogieController {
 
@@ -15,15 +14,15 @@ public class BogieController {
         this.service = new BogieServiceImpl();
     }
 
-    public void addBogie(String name, int capacity, String type) {
-        service.addBogie(new Bogie(name, capacity, type));
+    public void addBogie(String name, int displayCount, int actualSeats) {
+        service.addBogie(new Bogie(name, displayCount, actualSeats));
     }
 
-    public List<Bogie> getFilteredBogies(int capacity) {
-        return service.filterByCapacityGreaterThan(capacity);
+    public List<Bogie> getAllBogies() {
+        return service.getAllBogies();
     }
 
-    public Map<String, List<Bogie>> getGroupedBogies() {
-        return service.groupBogiesByType();
+    public int getTotalCapacity() {
+        return service.getTotalSeatingCapacity();
     }
 }
