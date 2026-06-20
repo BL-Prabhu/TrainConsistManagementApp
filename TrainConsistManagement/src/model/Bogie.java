@@ -3,29 +3,24 @@ package model;
 public class Bogie {
 
     private String name;
-    private int capacity;
-    private String type; // Passenger / Goods / AC / Non-AC
+    private int displayCount;   // what user sees
+    private int actualSeats;    // used for total calculation
 
-    public Bogie(String name, int capacity, String type) {
+    public Bogie(String name, int displayCount, int actualSeats) {
         this.name = name;
-        this.capacity = capacity;
-        this.type = type;
+        this.displayCount = displayCount;
+        this.actualSeats = actualSeats;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int getDisplayCount() {
+        return displayCount;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    @Override
-    public String toString() {
-        return name + " (" + capacity + ", " + type + ")";
+    public int getActualSeats() {
+        return actualSeats;
     }
 }
