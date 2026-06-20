@@ -4,10 +4,12 @@ public class Bogie {
 
     private String name;
     private int capacity;
+    private String type; // Passenger / Goods / AC / Non-AC
 
-    public Bogie(String name, int capacity) {
+    public Bogie(String name, int capacity, String type) {
         this.name = name;
         this.capacity = capacity;
+        this.type = type;
     }
 
     public String getName() {
@@ -18,8 +20,12 @@ public class Bogie {
         return capacity;
     }
 
+    public String getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
-        return name + " (" + capacity + ")";
+        return name + " (" + capacity + ", " + type + ")";
     }
 }

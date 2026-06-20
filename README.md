@@ -1,43 +1,48 @@
-# UC8 - Filter Passenger Bogies Using Streams
+# UC9 - Group Bogies by Type (Collectors.groupingBy)
 
 ## 📌 Overview
-This use case demonstrates filtering of bogies using Java Stream API.
+This use case demonstrates grouping bogies into categories using Java Stream API.
 
-## ❗ Problem in UC7
-- Sorting only arranges data
-- Cannot filter based on conditions
-- Requires manual loops
+## ❗ Problem in UC8
+- Filtering gives flat list
+- No categorization
+- Difficult for reporting
 
 ## 🎯 Objective
-Filter bogies based on seating capacity using Streams.
+Group bogies into structured categories using groupingBy.
 
 ## 🛠️ Technologies Used
 - Java
 - Stream API
-- Lambda Expressions
-- Collections (List)
+- Collectors.groupingBy
+- Map
 
 ## ▶️ Flow
 1. Create bogie list
 2. Convert to stream
-3. Apply filter condition
-4. Collect results
-5. Display filtered bogies
+3. Apply groupingBy()
+4. Store result in Map
+5. Display grouped bogies
 
 ## 📊 Sample Output
 
-Bogies with capacity > 60:
-Sleeper (72)
-General (90)
+Type: Passenger
+Sleeper (72, Passenger)
+AC Chair (56, Passenger)
+First Class (24, Passenger)
+
+Type: Goods
+Goods Carrier (0, Goods)
+Parcel Van (0, Goods)
 
 ## 🚀 Key Concepts
-- stream()
-- filter()
-- collect()
-- Functional programming
+- groupingBy()
+- Map<K, List<V>>
+- Data aggregation
+- Structured transformation
 
 ## ✅ Benefits
-- Cleaner code
-- No manual loops
-- Easy to maintain
-- Declarative style
+- Organized data
+- Better reporting
+- Easy analytics
+- Clean and readable
