@@ -1,13 +1,13 @@
 package model;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Train {
 
-    private final LinkedHashSet<String> bogies = new LinkedHashSet<>();
+    private final Map<String, Integer> bogieCapacityMap = new HashMap<>();
 
-    public Set<String> getBogies() {
-        return bogies;
+    public Map<String, Integer> getBogieCapacityMap() {
+        return bogieCapacityMap;
     }
 }

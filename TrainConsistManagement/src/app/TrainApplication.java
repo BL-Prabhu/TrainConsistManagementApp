@@ -1,9 +1,10 @@
 package app;
 
+
 import controller.TrainController;
 
 /**
- * UC5 - Preserve Insertion Order of Bogies using LinkedHashSet
+ * UC6 - Map Bogie to Capacity using HashMap
  */
 public class TrainApplication {
 
@@ -11,26 +12,19 @@ public class TrainApplication {
 
         TrainController controller = new TrainController();
 
-        System.out.println("==========================================");
-        System.out.println(" UC5 - Preserve Insertion Order of Bogies ");
-        System.out.println("==========================================\n");
+        System.out.println("======================================");
+        System.out.println(" UC6 - Map Bogie to Capacity (HashMap)");
+        System.out.println("======================================\n");
 
-        // Step 1: Add bogies
-        controller.addBogie("Engine");
-        controller.addBogie("Sleeper");
-        controller.addBogie("Cargo");
-        controller.addBogie("Guard");
+        // Step 1: Add bogie capacities
+        controller.addBogieCapacity("Sleeper", 72);
+        controller.addBogieCapacity("AC Chair", 60);
+        controller.addBogieCapacity("First Class", 24);
 
-        // Step 2: Add duplicate
-        controller.addBogie("Sleeper"); // duplicate
+        // Step 2: Display mapping
+        System.out.println("Bogie Capacity Mapping:");
+        controller.displayFormation();
 
-        // Step 3: Display final formation
-        System.out.println("Final Train Formation:");
-        System.out.println(controller.getFormation());
-
-        System.out.println("\nNote:");
-        System.out.println("LinkedHashSet preserves insertion order and removes duplicates automatically.");
-
-        System.out.println("\nUC5 formation setup completed...");
+        System.out.println("\nUC6 mapping completed...");
     }
 }

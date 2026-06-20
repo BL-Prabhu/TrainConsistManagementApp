@@ -1,58 +1,27 @@
-# 🚆 Train Consist Management App (UC5)
+# 🚆 Train Consist Management App (UC6)
 
-A **console-based Java application** that simulates how a railway system maintains a train’s consist while ensuring **both uniqueness and insertion order of bogies**.
+A **console-based Java application** that simulates how a railway system maps each bogie to its **seating or load capacity** using a key–value structure.
 
-This use case demonstrates how to use **LinkedHashSet** to model real-world train formation constraints.
+This use case introduces **HashMap** to represent real-world relationships between bogies and their attributes.
 
 ---
 
 ## 📌 Features
 
-### ✅ UC5: Preserve Insertion Order of Bogies
+### ✅ UC6: Map Bogie to Capacity
 
-* Maintain bogies in **exact insertion sequence**
-* Prevent **duplicate bogie attachments**
-* Automatically enforce **uniqueness**
-* Display train formation in **original order**
-* No manual validation required for duplicates
+* Associate each bogie with its **capacity**
+* Store data using **key–value mapping**
+* Display bogie and capacity together
+* Enable fast lookup using bogie name
 
 ---
 
 ## 🧱 Architecture
 
-This project follows a **Layered Architecture (similar to MVC pattern)**:
-
 ```
 Main → Controller → Service → Model → Utility
 ```
-
----
-
-### 🔹 Layers Explained
-
-* **App Layer**
-
-  * Entry point of the application
-  * Simulates bogie attachment flow
-
-* **Controller Layer**
-
-  * Handles user actions
-  * Delegates logic to service layer
-
-* **Service Layer**
-
-  * Contains business logic
-  * Uses LinkedHashSet for operations
-
-* **Model Layer**
-
-  * Represents train data
-  * Stores bogies in LinkedHashSet
-
-* **Utility Layer**
-
-  * Handles formatted console output
 
 ---
 
@@ -61,17 +30,17 @@ Main → Controller → Service → Model → Utility
 ```
 com.train
 │── app/
-│     └── TrainApplicationUC5.java
+│     └── TrainApplicationUC6.java
 │
 │── controller/
-│     └── TrainControllerUC5.java
+│     └── TrainControllerUC6.java
 │
 │── service/
-│     ├── TrainServiceUC5.java
-│     └── TrainServiceImplUC5.java
+│     ├── TrainServiceUC6.java
+│     └── TrainServiceImplUC6.java
 │
 │── model/
-│     └── Train.java
+│     └── TrainUC6.java
 │
 │── util/
 │     └── ConsolePrinter.java
@@ -82,141 +51,95 @@ com.train
 ## 🛠️ Tech Stack
 
 * Java 8+
-* Java Collections Framework (`LinkedHashSet`)
-* Object-Oriented Programming (OOP)
-* Clean Code Practices
+* Java Collections Framework (`HashMap`)
+* OOP Principles
+* Clean Architecture
 
 ---
 
 ## ❗ Problem
 
-Using previous approaches:
+Previous use cases:
 
-* **ArrayList / LinkedList**
-
-  * Allows duplicates ❌
-* **HashSet**
-
-  * Removes duplicates ✔
-  * Does NOT maintain order ❌
-
-👉 Train systems require:
-
-* No duplicate bogies
-* Exact attachment sequence
+* Stored only bogie names ❌
+* No way to store capacity ❌
+* No real-world attribute mapping ❌
 
 ---
 
 ## ✅ Solution
 
-Use **LinkedHashSet**:
+Use **HashMap<String, Integer>**
 
-* Maintains **insertion order**
-* Automatically removes **duplicates**
-* Combines benefits of **Set + List**
+* Key → Bogie Name
+* Value → Capacity
 
 ---
 
 ## ⚙️ Operations
 
-### 1. Add Bogies
+### 1. Add Mapping
 
 ```
-Engine → Sleeper → Cargo → Guard
-```
-
----
-
-### 2. Add Duplicate (Ignored)
-
-```
-Sleeper (duplicate)
+Sleeper → 72
+AC Chair → 60
+First Class → 24
 ```
 
 ---
 
-### 3. Display Final Formation
+### 2. Display Mapping
 
 ```
-[Engine, Sleeper, Cargo, Guard]
-```
-
----
-
-## 💡 Sample Output
-
-```
-==========================================
- UC5 - Preserve Insertion Order of Bogies
-==========================================
-
-Final Train Formation:
-[Engine, Sleeper, Cargo, Guard]
-
-Note:
-LinkedHashSet preserves insertion order and removes duplicates automatically.
-
-UC5 formation setup completed...
+Sleeper -> Capacity: 72
+AC Chair -> Capacity: 60
+First Class -> Capacity: 24
 ```
 
 ---
 
 ## 📚 Key Concepts Covered
 
-* LinkedHashSet (Order + Uniqueness)
-* Set Interface
-* Automatic Deduplication
-* Ordered Iteration
-* Layered Architecture
-* Separation of Concerns
+* HashMap
+* Key–Value Pair Mapping
+* entrySet() Iteration
+* Fast Lookup
+* Data Modeling
 
 ---
 
-## 🔑 Key Requirements Implemented
+## 🔑 Key Requirements
 
-* Use `LinkedHashSet<String>` for train formation
-* Add multiple bogies
-* Attempt duplicate insertion
-* Ensure duplicates are ignored
-* Print final ordered formation
+* Use `HashMap<String, Integer>`
+* Insert bogie-capacity pairs
+* Iterate using `entrySet()`
+* Display output clearly
 
 ---
 
 ## 🚀 Future Enhancements
 
-* Add **user input (Scanner-based menu)**
-* Implement **bogie validation rules**
-* Introduce **custom Bogie class (equals & hashCode)**
-* Convert into **Spring Boot REST API**
-* Add **database integration (JPA/Hibernate)**
-* Implement **logging and exception handling**
+* Add validation rules for capacity
+* Introduce Bogie class (OOP)
+* Convert into REST API (Spring Boot)
+* Add database (JPA/Hibernate)
 
 ---
 
 ## 🌿 Git Workflow
 
-### Branch Naming Convention
+### Branch
 
 ```
-feature/uc5-linkedhashset-bogie-order
+feature/uc6-hashmap-bogie-capacity
 ```
 
----
-
-### Commit Message Format
+### Commits
 
 ```
-feat: implement bogie uniqueness using LinkedHashSet
-feat: preserve insertion order in train formation
-refactor: improve service layer abstraction
-docs: add README for UC5
+feat: implement hashmap mapping for bogies
+docs: add UC6 readme
 ```
-
----
-
-## 👨‍💻 Author
-
-Developed as part of learning **real-world Java backend development** and **data structure-driven system design**.
 
 ---
 
@@ -224,10 +147,10 @@ Developed as part of learning **real-world Java backend development** and **data
 
 This use case demonstrates how to:
 
-* Maintain **order + uniqueness simultaneously**
-* Prevent invalid duplicate entries
-* Use **LinkedHashSet in real-world scenarios**
+* Model real-world relationships using HashMap
+* Store and retrieve structured data efficiently
+* Build foundation for analytics and validation
 
 ---
 
-🚀 *Next Step:* Combine UC1–UC5 into a unified system and enhance with **OOP modeling + REST APIs + database integration**.
+🚀 *Next Step:* Extend with **custom objects + database integration**
