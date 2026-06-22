@@ -1,44 +1,52 @@
-# UC18: Linear Search for Bogie ID
+# UC19: Binary Search for Bogie ID
 
 ## 📌 Overview
 
-This use case introduces Linear Search to find a specific bogie ID from an unsorted array.
+This use case introduces Binary Search to efficiently find a bogie ID from a sorted array.
 
 ## ❗ Problem
 
-Previous use cases could sort and display data but could not search for a specific bogie.
+Linear Search (UC18):
+
+* Slow for large datasets (O(n))
+* Checks every element sequentially
 
 ## 🎯 Goal
 
-Implement a simple search mechanism that works on unsorted data.
+Use Binary Search to improve search performance.
 
 ## ⚙️ Flow
 
-1. User provides bogie IDs
+1. User provides sorted bogie IDs
 2. User enters search key
-3. System checks each element sequentially
-4. Stops when match is found
-5. Displays result
+3. System calculates mid index
+4. Compares key with mid value
+5. Reduces search range by half
+6. Repeats until found or exhausted
+7. Displays result
 
 ## 🧠 Concepts Used
 
-* Linear Search
-* Sequential Traversal
-* equals() for String comparison
-* Early Termination
-* Time Complexity O(n)
+* Binary Search
+* Divide and Conquer
+* compareTo() for String comparison
+* Index-based traversal (low, high, mid)
+* Time Complexity O(log n)
+
+## ⚠️ Important Condition
+
+Binary Search ONLY works on sorted data.
 
 ## 📊 Output
 
-Displays whether the bogie exists in the train consist.
+Displays whether the bogie exists.
 
 ## 🚀 Benefits
 
-* Works without sorting
-* Easy to implement
-* Reliable for small datasets
-* Foundation for advanced searching
+* Very fast search (logarithmic time)
+* Efficient for large datasets
+* Reduces unnecessary comparisons
 
 ## 🔥 Conclusion
 
-Linear Search is the simplest searching technique and is essential before learning optimized search algorithms like Binary Search.
+Binary Search is a highly efficient searching technique and is widely used in real-world systems where fast lookup is required.
