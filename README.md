@@ -1,62 +1,48 @@
-# UC15: Safe Cargo Assignment Using try-catch-finally
+# UC16: Sort Passenger Bogies by Capacity (Bubble Sort)
 
 ## 📌 Overview
 
-This use case demonstrates safe runtime handling of cargo assignment using structured exception handling.
+This use case demonstrates manual sorting using the Bubble Sort algorithm instead of built-in Java sorting methods.
 
 ## ❗ Problem
 
-During runtime:
-
-* Unsafe cargo may be assigned
-* System may crash if not handled
-
-Example:
-Assigning petroleum to a rectangular bogie is unsafe.
+Built-in sorting methods hide internal logic, making it harder for students to understand how sorting works.
 
 ## 🎯 Goal
 
-Handle unsafe assignments gracefully using:
-
-* try
-* catch
-* finally
+Implement Bubble Sort to understand sorting fundamentals.
 
 ## ⚙️ Flow
 
-1. User assigns cargo
-2. System validates compatibility
-3. If unsafe → throw exception
-4. Exception is caught
-5. Error message displayed
-6. finally block executes
-7. Program continues safely
+1. User provides an array of capacities
+2. System compares adjacent elements
+3. Swaps if elements are in wrong order
+4. Repeats passes until sorted
+5. Displays sorted result
 
 ## 🧠 Concepts Used
 
-* Runtime Exception
-* Custom Exception
-* try-catch-finally
-* Graceful Failure Handling
-* Defensive Programming
+* Bubble Sort Algorithm
+* Nested Loops
+* Array Manipulation
+* Swapping Logic
+* Time Complexity O(n²)
 
 ## 📊 Output
 
-* Success message for valid assignments
-* Error message for unsafe cases
-* Completion log always printed
+Displays capacities before and after sorting.
 
-## ✅ Key Rule
+## 🚫 Restrictions
 
-Rectangular bogie cannot carry petroleum
+* Do NOT use Arrays.sort()
+* Do NOT use Collections.sort()
 
 ## 🚀 Benefits
 
-* Prevents application crash
-* Ensures runtime safety
-* Provides user-friendly feedback
-* Guarantees execution of critical logic
+* Builds strong algorithmic foundation
+* Improves logical thinking
+* Prepares for advanced sorting algorithms
 
 ## 🔥 Conclusion
 
-Use structured exception handling to manage runtime risks without stopping the system.
+Understanding basic algorithms like Bubble Sort helps in mastering more complex optimizations later.
