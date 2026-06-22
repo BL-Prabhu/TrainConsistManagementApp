@@ -2,24 +2,18 @@ package service;
 
 public class SearchService {
 
-    // 🔍 Binary Search Method (Array must be sorted)
-    public boolean binarySearchBogieId(String[] bogieIds, String searchKey) {
+    // 🔍 Search with Fail-Fast Validation
+    public boolean searchBogieById(String[] bogieIds, String searchKey) {
 
-        int low = 0;
-        int high = bogieIds.length - 1;
+        // ❗ Fail-Fast Check
+        if (bogieIds == null || bogieIds.length == 0) {
+            throw new IllegalStateException("❌ Cannot perform search: No bogies available in train");
+        }
 
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            int comparison = bogieIds[mid].compareTo(searchKey);
-
-            if (comparison == 0) {
+        // 🔎 Linear Search
+        for (String id : bogieIds) {
+            if (id.equals(searchKey)) {
                 return true; // 🎯 Found
-            } else if (comparison < 0) {
-                low = mid + 1; // Search right half
-            } else {
-                high = mid - 1; // Search left half
             }
         }
 
