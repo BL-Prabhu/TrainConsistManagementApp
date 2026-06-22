@@ -1,52 +1,57 @@
-# UC19: Binary Search for Bogie ID
+# UC20: Exception Handling During Search Operations
 
 ## 📌 Overview
 
-This use case introduces Binary Search to efficiently find a bogie ID from a sorted array.
+This use case introduces defensive programming by preventing search operations on an empty bogie list.
 
 ## ❗ Problem
 
-Linear Search (UC18):
+Earlier search implementations assumed data always exists.
 
-* Slow for large datasets (O(n))
-* Checks every element sequentially
+This leads to:
+
+* Invalid operations
+* Misleading results
+* Poor system reliability
 
 ## 🎯 Goal
 
-Use Binary Search to improve search performance.
+Stop execution early if no bogies are available.
 
 ## ⚙️ Flow
 
-1. User provides sorted bogie IDs
-2. User enters search key
-3. System calculates mid index
-4. Compares key with mid value
-5. Reduces search range by half
-6. Repeats until found or exhausted
-7. Displays result
+1. User triggers search
+2. System checks if bogie list is empty
+3. If empty → throws IllegalStateException
+4. Search stops immediately
+5. User receives error message
 
 ## 🧠 Concepts Used
 
-* Binary Search
-* Divide and Conquer
-* compareTo() for String comparison
-* Index-based traversal (low, high, mid)
-* Time Complexity O(log n)
+* Defensive Programming
+* Fail-Fast Principle
+* IllegalStateException
+* Runtime Exception Handling
+* State Validation
 
-## ⚠️ Important Condition
+## ⚠️ Validation Rule
 
-Binary Search ONLY works on sorted data.
+Search operation is NOT allowed when:
+
+* Array is null
+* Array is empty
 
 ## 📊 Output
 
-Displays whether the bogie exists.
+Displays meaningful error instead of executing invalid logic.
 
 ## 🚀 Benefits
 
-* Very fast search (logarithmic time)
-* Efficient for large datasets
-* Reduces unnecessary comparisons
+* Prevents unnecessary computation
+* Avoids incorrect program behavior
+* Improves code robustness
+* Makes system predictable
 
 ## 🔥 Conclusion
 
-Binary Search is a highly efficient searching technique and is widely used in real-world systems where fast lookup is required.
+Fail-fast validation ensures the system behaves correctly by stopping invalid operations early, which is critical in real-world applications.
