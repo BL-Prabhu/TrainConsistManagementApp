@@ -1,31 +1,53 @@
-# UC13: Performance Comparison (Loops vs Streams)
+# UC14: Handle Invalid Bogie Capacity (Custom Exception)
 
-## Problem
-Developers often assume Streams are faster than loops without measuring performance.
+## 📌 Overview
 
-## Solution
-This use case compares:
-- Loop-based filtering
-- Stream-based filtering
+This use case ensures that invalid passenger bogies are never added to the system by enforcing validation rules using a custom exception.
 
-## Concepts Used
-- System.nanoTime()
-- Streams API
-- Performance Benchmarking
-- Loop iteration
+## ❗ Problem
 
-## Flow
-1. Create large dataset of bogies
-2. Run loop-based filtering
-3. Measure execution time
-4. Run stream-based filtering
-5. Measure execution time
-6. Compare results
+Invalid data such as:
 
-## Output
-Displays execution time in nanoseconds for both approaches.
+* Zero capacity
+* Negative capacity
 
-## Key Learning
-- Streams improve readability
-- Loops may perform better in some cases
-- Always measure performance before optimizing
+can corrupt the system and break downstream logic.
+
+## 🎯 Goal
+
+Use a custom exception to prevent creation of invalid bogies.
+
+## ⚙️ Flow
+
+1. User creates a passenger bogie
+2. Constructor validates capacity
+3. If invalid → throw exception
+4. If valid → create bogie
+5. System continues safely
+
+## 🧠 Concepts Used
+
+* Custom Exception
+* Exception Inheritance
+* throw & throws
+* Fail-Fast Validation
+* Defensive Programming
+
+## ✅ Key Rule
+
+Capacity must be greater than 0
+
+## 📊 Output
+
+Displays error message for invalid bogie and prints valid bogies only.
+
+## 🚀 Benefits
+
+* Prevents bad data entry
+* Ensures system reliability
+* Stops errors early
+* Improves code safety
+
+## 🔥 Conclusion
+
+Always validate input at the object creation stage to avoid future failures.
