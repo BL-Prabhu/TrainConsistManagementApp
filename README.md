@@ -1,62 +1,31 @@
-# UC12 - Safety Compliance Check for Goods Bogies
+# UC13: Performance Comparison (Loops vs Streams)
 
-## 📌 Overview
+## Problem
+Developers often assume Streams are faster than loops without measuring performance.
 
-This use case enforces real-world safety rules on goods bogies using Java Streams and lambda expressions.
+## Solution
+This use case compares:
+- Loop-based filtering
+- Stream-based filtering
 
-## ❗ Problem Statement
+## Concepts Used
+- System.nanoTime()
+- Streams API
+- Performance Benchmarking
+- Loop iteration
 
-Earlier use cases allowed any cargo assignment without validation, which can lead to:
+## Flow
+1. Create large dataset of bogies
+2. Run loop-based filtering
+3. Measure execution time
+4. Run stream-based filtering
+5. Measure execution time
+6. Compare results
 
-* Unsafe train configurations
-* Violation of domain rules
-* Operational hazards
+## Output
+Displays execution time in nanoseconds for both approaches.
 
-## 🎯 Objective
-
-Ensure safety compliance:
-
-* Cylindrical bogies must carry Petroleum only
-
-## 🔧 Technologies Used
-
-* Java Streams API
-* Lambda Expressions
-* allMatch() Terminal Operation
-
-## ▶️ Flow
-
-1. User provides list of goods bogies
-2. System converts list to stream
-3. allMatch() validates each bogie
-4. Rule applied:
-
-    * Cylindrical → Petroleum only
-5. Displays safety result
-
-## 📊 Sample Output
-
---- Safety Compliance Result ---
-Train is SAFE for operation ✅
-
---- Invalid Scenario ---
-Train is NOT SAFE ❌
-Rule Violated: Cylindrical bogie must carry Petroleum only
-
-## 🧠 Key Concepts
-
-* stream()
-* allMatch()
-* Lambda expressions
-* Short-circuit evaluation
-
-## ✅ Benefits
-
-* Prevents unsafe cargo assignments
-* Enforces business rules
-* Improves system reliability
-* Uses declarative programming
-
-## 🚀 Conclusion
-
-UC12 introduces safety validation using streams, ensuring that only compliant train formations proceed further in the system.
+## Key Learning
+- Streams improve readability
+- Loops may perform better in some cases
+- Always measure performance before optimizing
