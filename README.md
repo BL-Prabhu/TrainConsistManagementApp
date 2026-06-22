@@ -1,53 +1,62 @@
-# UC14: Handle Invalid Bogie Capacity (Custom Exception)
+# UC15: Safe Cargo Assignment Using try-catch-finally
 
 ## 📌 Overview
 
-This use case ensures that invalid passenger bogies are never added to the system by enforcing validation rules using a custom exception.
+This use case demonstrates safe runtime handling of cargo assignment using structured exception handling.
 
 ## ❗ Problem
 
-Invalid data such as:
+During runtime:
 
-* Zero capacity
-* Negative capacity
+* Unsafe cargo may be assigned
+* System may crash if not handled
 
-can corrupt the system and break downstream logic.
+Example:
+Assigning petroleum to a rectangular bogie is unsafe.
 
 ## 🎯 Goal
 
-Use a custom exception to prevent creation of invalid bogies.
+Handle unsafe assignments gracefully using:
+
+* try
+* catch
+* finally
 
 ## ⚙️ Flow
 
-1. User creates a passenger bogie
-2. Constructor validates capacity
-3. If invalid → throw exception
-4. If valid → create bogie
-5. System continues safely
+1. User assigns cargo
+2. System validates compatibility
+3. If unsafe → throw exception
+4. Exception is caught
+5. Error message displayed
+6. finally block executes
+7. Program continues safely
 
 ## 🧠 Concepts Used
 
+* Runtime Exception
 * Custom Exception
-* Exception Inheritance
-* throw & throws
-* Fail-Fast Validation
+* try-catch-finally
+* Graceful Failure Handling
 * Defensive Programming
-
-## ✅ Key Rule
-
-Capacity must be greater than 0
 
 ## 📊 Output
 
-Displays error message for invalid bogie and prints valid bogies only.
+* Success message for valid assignments
+* Error message for unsafe cases
+* Completion log always printed
+
+## ✅ Key Rule
+
+Rectangular bogie cannot carry petroleum
 
 ## 🚀 Benefits
 
-* Prevents bad data entry
-* Ensures system reliability
-* Stops errors early
-* Improves code safety
+* Prevents application crash
+* Ensures runtime safety
+* Provides user-friendly feedback
+* Guarantees execution of critical logic
 
 ## 🔥 Conclusion
 
-Always validate input at the object creation stage to avoid future failures.
+Use structured exception handling to manage runtime risks without stopping the system.
