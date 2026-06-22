@@ -1,48 +1,46 @@
-# UC16: Sort Passenger Bogies by Capacity (Bubble Sort)
+# UC17: Sort Bogie Names Using Arrays.sort()
 
 ## 📌 Overview
 
-This use case demonstrates manual sorting using the Bubble Sort algorithm instead of built-in Java sorting methods.
+This use case demonstrates sorting bogie names using Java's built-in `Arrays.sort()` method instead of manual algorithms.
 
 ## ❗ Problem
 
-Built-in sorting methods hide internal logic, making it harder for students to understand how sorting works.
+Manual sorting (like Bubble Sort):
+
+* Is slow for large data
+* Has O(n²) complexity
+* Makes code verbose
 
 ## 🎯 Goal
 
-Implement Bubble Sort to understand sorting fundamentals.
+Use `Arrays.sort()` for efficient and clean sorting.
 
 ## ⚙️ Flow
 
-1. User provides an array of capacities
-2. System compares adjacent elements
-3. Swaps if elements are in wrong order
-4. Repeats passes until sorted
-5. Displays sorted result
+1. User provides bogie names
+2. System calls Arrays.sort()
+3. Java sorts internally
+4. Sorted result is displayed
 
 ## 🧠 Concepts Used
 
-* Bubble Sort Algorithm
-* Nested Loops
-* Array Manipulation
-* Swapping Logic
-* Time Complexity O(n²)
+* Arrays.sort()
+* Natural Ordering (Alphabetical)
+* Time Complexity O(n log n)
+* Library Optimization
 
 ## 📊 Output
 
-Displays capacities before and after sorting.
-
-## 🚫 Restrictions
-
-* Do NOT use Arrays.sort()
-* Do NOT use Collections.sort()
+Displays bogie names before and after sorting.
 
 ## 🚀 Benefits
 
-* Builds strong algorithmic foundation
-* Improves logical thinking
-* Prepares for advanced sorting algorithms
+* Faster than manual sorting
+* Cleaner code
+* Industry standard approach
+* Reduces development effort
 
 ## 🔥 Conclusion
 
-Understanding basic algorithms like Bubble Sort helps in mastering more complex optimizations later.
+Always prefer built-in sorting utilities for production systems instead of writing custom algorithms.
